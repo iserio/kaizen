@@ -1,0 +1,102 @@
+1) Посмотреть где я
+pwd
+
+2) Создать папку
+mkdir
+
+3) Зайти в папку
+cd papka (если просто cd переходит в корень)
+заметил, что в внутри папки даже без cd заходит
+
+4) Создать 3 папки
+mkdir papka1 papka2 papka3
+
+5) Зайти в любоую папку
+(относительный) из текущей папки ./papka
+(абсолютный) /Users/kaizen/Desktop/lesson1_terminal/folder_1/f_1
+
+6) Создать 5 файлов (3 txt, 2 json)
+touch note1.txt note2.txt note3.txt file1.json file2.json
+
+7) Создать 3 папки
+mkdir -p papka4/papka5/papka6  (recursively)
+
+8. Вывести список содержимого папки
+ls
+
+9) + Открыть любой txt файл
+vim note1.txt
+
+10) + написать туда что-нибудь, любой текст.
+нажал 'i' для перехода в режим --INSERT-- написал текст
+
+11) + сохранить и выйти.
+esc :wq enter
+
+12) Выйти из папки на уровень выше
+cd ..
+
+13) переместить любые 2 файла, которые вы создали, в любую другую папку.
+mv note1.txt note2.txt papka4
+
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку.
+cp note1.txt note2.txt ~/Desktop/lesson1_terminal/folder_1/d_1/
+
+15) Найти файл по имени
+find . -type f -name "test.txt"
+
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает.
+grep -rin --include="*.txt" "informacia" .
+rg -i "informacia" .
+
+Работает через tail, только количество строк нужно увеличивать. Причем тут grep неронятно))
+tail -F -n 100 my_file
+
+17) вывести несколько первых строк из текстового файла
+head test.txt
+
+18) вывести несколько последних строк из текстового файла
+tail test.txt
+
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает.
+less test.txt
+
+20) вывести дату и время
+date
+
+Задание *
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/object_info_3?name=Vadim&age=32&salary=1000
+
+посмотреть status code, может ли сервер дать ответ
+telnet 162.55.220.72 5005
+GET / HTTP/1.0
+
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 7
+Server: Werkzeug/2.0.1 Python/3.8.10
+Date: Sat, 30 Oct 2021 23:21:37 GMT
+
+curl http://162.55.220.72:5005/object_info_3\?name\=Vadim\&age\=32\&salary\=1000
+{"age":"32","family":{"children":[["Alex",24],["Kate",12]],"pets":{"cat":{"age":3,"name":"Sunny"},"dog":{"age":4,"name":"Luky"}},"u_salary_1_5_year":4000},"name":"Vadim","salary":1000}
+
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+
+#!/bin/bash
+
+echo "Privet Anastasia :)"                                      #привет)
+cd                                                              #переход в корень
+mkdir papka_dz1 && cd ./papka_dz1                               #создали и перешли в papka_dz1
+mkdir papka1 papka2 papka3                                      #созданы папки
+cd ./papka1                                                     #переход в papka1
+mkdir -p papka1_1/papka1_2/papka1_3                             #созданы папки рекурсивно
+touch note1.txt note2.txt note3.txt file1.json file2.json       #созданы файлы
+echo "...nasozdavali tut vsiakogo..."
+ls                                                              #вывели список содержимого
+mv file1.json file2.json ../papka2                              #file1.json file2.json перемещены из papka1 в papka2
+echo "
+                        (\__/)
+                        (='.'=)
+Spasibo chto pomogaesh  (0)_(0)
+"
